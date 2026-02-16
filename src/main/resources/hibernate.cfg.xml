@@ -31,6 +31,11 @@
         </property>
 
         <mapping class="models.User"/>
+        <mapping class="models.Teacher"/>
+        <mapping class="models.StudentModule"/>
+        <mapping class="models.Student"/>
+        <mapping class="models.Module"/>
+        <mapping class="models.Grade"/>
 
     </session-factory>
 </hibernate-configuration>
