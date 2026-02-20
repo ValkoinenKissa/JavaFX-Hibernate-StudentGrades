@@ -13,7 +13,7 @@ import java.util.Optional;
 
 /**
  * Implementación base de GenericDAO para Hibernate 6.x
- * Todos los DAOs específicos heredan de esta clase
+ * Todos los DAO específicos heredan de esta clase
  */
 public abstract class GenericDAOImp<T, ID> implements GenericDAO<T, ID> {
 
