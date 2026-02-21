@@ -22,12 +22,11 @@
             xmlns:fx="http://javafx.com/fxml/1"
             styleClass="root">
 
-   <!-- Cargar CSS (ajusta la ruta si lo metes en otra carpeta) -->
+   <!-- Cargar CSS -->
    <stylesheets>
       <URL value="@styles/login.css"/>
    </stylesheets>
 
-   <!-- Cabecera -->
    <top>
       <VBox spacing="6" styleClass="header" BorderPane.alignment="CENTER">
          <padding>
@@ -38,7 +37,6 @@
       </VBox>
    </top>
 
-   <!-- Centro: “tarjeta” -->
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <padding>
@@ -57,34 +55,28 @@
                   <ColumnConstraints minWidth="200" prefWidth="220"/>
                </columnConstraints>
 
-               <!-- Usuario -->
                <Label text="USUARIO" styleClass="field-label"
                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
                <TextField fx:id="userField" promptText="Ej: abollo"
                           styleClass="field"
                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-               <!-- Contraseña -->
                <Label text="CONTRASEÑA" styleClass="field-label"
                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
                <PasswordField fx:id="passField" promptText="••••••••"
                               styleClass="field"
                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-               <!-- Cargo -->
                <Label text="CARGO" styleClass="field-label"
                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
                <ComboBox fx:id="roleCombo" promptText="Selecciona un cargo"
                          styleClass="combo"
                          GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-               <!-- Imagen -->
                <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true"
                           styleClass="logo"
                           GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.rowSpan="3">
-                  <image>
-                     <Image url="@../../../images/logo.png"/>
-                  </image>
+                  <Image url="@../../../images/logo.png"/>
                </ImageView>
             </GridPane>
 
@@ -103,19 +95,17 @@
          <left>
             <Button fx:id="loginButton" text="ENTRAR"
                     defaultButton="true"
-                    styleClass="btn btn-primary"/>
+                    styleClass="btn-primary"/>
          </left>
 
          <!-- Derecha: SALIR + LIMPIAR -->
          <right>
             <HBox spacing="10" alignment="CENTER_RIGHT">
-               <children>
-                  <Button fx:id="cleanButton" text="LIMPIAR"
-                          styleClass="btn btn-secondary"/>
-                  <Button fx:id="exitButton" text="SALIR"
-                          cancelButton="true"
-                          styleClass="btn btn-danger"/>
-               </children>
+               <Button fx:id="cleanButton" text="LIMPIAR"
+                       styleClass="btn-secondary"/>
+               <Button fx:id="exitButton" text="SALIR"
+                       cancelButton="true"
+                       styleClass="btn-danger"/>
             </HBox>
          </right>
       </BorderPane>
