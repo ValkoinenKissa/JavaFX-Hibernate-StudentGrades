@@ -32,6 +32,17 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
+    // Relacciones
+
+    // Relaccion 1:1 con Teacher
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Teacher teacher;
+
+    // Relaccion 1:1 con Student
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Student student;
+
     public User(String username, String passwordHash, String firstName, String lastName, UserType userType) {
         this.username = username;
         this.passwordHash = passwordHash;

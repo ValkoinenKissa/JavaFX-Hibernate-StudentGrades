@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -25,9 +28,38 @@ public class Teacher {
     @Column(name = "specialty", length = 100)
     private String specialty;
 
+    // Relaciones
+
+    // Relación 1:1 con user
+
+    @OneToOne
+    @JoinColumn(name = "id_user", nullable = false, unique = true)
+    private User user;
+
+    // Relación N:M con Module (tabla intermedia teacher_module)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "teacher_module",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "module_id")
+    )
+    private Set<Module> modules = new HashSet<>();
+
     public Teacher(Integer idUser, String department, String specialty) {
         this.idUser = idUser;
         this.department = department;
         this.specialty = specialty;
+    }
+
+    // Métodos para añadir o eliminar modulos
+
+    public void addModule(Module module) {
+        this.modules.add(module);
+        module.getTeachers().add(this);
+    }
+
+    public void removeModule(Module module) {
+        this.modules.remove(module);
+        module.getTeachers().remove(this);
     }
 }

@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -23,9 +26,28 @@ public class Student {
     @Column(name = "grade_group", length = 10)
     private String gradeGroup;
 
+    // Relación 1:1 con User
+    @OneToOne
+    @JoinColumn(name = "id_user", nullable = false, unique = true)
+    private User user;
+
+    // Relación 1:N con StudentModule (matrículas)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<StudentModule> enrollments = new HashSet<>();
+
     public Student(Integer idUser, String course, String gradeGroup) {
         this.idUser = idUser;
         this.course = course;
         this.gradeGroup = gradeGroup;
+    }
+
+    public void addEnrollment(StudentModule enrollment) {
+        this.enrollments.add(enrollment);
+        enrollment.setStudent(this);
+    }
+
+    public void removeEnrollment(StudentModule enrollment) {
+        this.enrollments.remove(enrollment);
+        enrollment.setStudent(null);
     }
 }
