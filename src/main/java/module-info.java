@@ -15,4 +15,6 @@ module org.example.studentgrades {
 
     opens org.example.studentgrades to javafx.fxml;
     exports org.example.studentgrades;
+    exports org.example.studentgrades.controllers;
+    opens org.example.studentgrades.controllers to javafx.fxml;
 }

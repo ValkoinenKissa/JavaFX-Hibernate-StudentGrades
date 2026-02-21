@@ -20,6 +20,7 @@
 <BorderPane prefHeight="430.0" prefWidth="780.0"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.studentgrades.controllers.StartController"
             styleClass="root">
 
    <!-- Cargar CSS -->
@@ -91,14 +92,12 @@
             <Insets top="10" right="24" bottom="18" left="24"/>
          </padding>
 
-         <!-- Izquierda: ENTRAR -->
          <left>
             <Button fx:id="loginButton" text="ENTRAR"
                     defaultButton="true"
                     styleClass="btn-primary"/>
          </left>
 
-         <!-- Derecha: SALIR + LIMPIAR -->
          <right>
             <HBox spacing="10" alignment="CENTER_RIGHT">
                <Button fx:id="cleanButton" text="LIMPIAR"

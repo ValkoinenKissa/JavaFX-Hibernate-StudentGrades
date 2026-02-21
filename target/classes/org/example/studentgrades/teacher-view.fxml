@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import java.net.URL?>
+<BorderPane prefWidth="920" prefHeight="540"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.studentgrades.controllers.TeacherController"
+            styleClass="root">
+
+    <stylesheets>
+        <URL value="@styles/login.css"/>
+    </stylesheets>
+
+    <top>
+        <VBox styleClass="header" spacing="6">
+            <padding>
+                <Insets top="18" right="24" bottom="10" left="24"/>
+            </padding>
+            <Text text="Panel del profesor" styleClass="title"/>
+            <Text fx:id="teacherNameText" text="Profesor/a: -" styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="16">
+            <padding>
+                <Insets top="10" right="24" bottom="10" left="24"/>
+            </padding>
+
+            <!-- IZQ: tabla alumnos -->
+            <VBox spacing="12" HBox.hgrow="ALWAYS" styleClass="card">
+                <padding>
+                    <Insets top="16" right="16" bottom="16" left="16"/>
+                </padding>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Módulo:" styleClass="field-label"/>
+                    <ComboBox fx:id="moduleCombo" promptText="Selecciona un módulo"
+                              styleClass="field combo" prefWidth="420"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <TextField fx:id="searchField" promptText="Buscar alumno..."
+                               styleClass="field" prefWidth="220"/>
+                </HBox>
+
+                <TableView fx:id="studentsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colStudent" text="Alumno/a" prefWidth="270"/>
+                        <TableColumn fx:id="colCourse" text="Curso" prefWidth="130"/>
+                        <TableColumn fx:id="colGroup" text="Grupo" prefWidth="100"/>
+                        <TableColumn fx:id="colLastGrade" text="Última" prefWidth="90"/>
+                        <TableColumn fx:id="colAvgGrade" text="Media" prefWidth="90"/>
+                        <TableColumn fx:id="colCount" text="#Notas" prefWidth="80"/>
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button fx:id="refreshButton" text="REFRESCAR" styleClass="btn btn-secondary"/>
+                    <Button fx:id="logoutButton" text="CERRAR SESIÓN" styleClass="btn btn-danger"/>
+                </HBox>
+            </VBox>
+
+            <!-- DER: panel asignar nota -->
+            <VBox spacing="12" prefWidth="300" styleClass="card">
+                <padding>
+                    <Insets top="16" right="16" bottom="16" left="16"/>
+                </padding>
+
+                <Text text="Asignar nota" styleClass="title"/>
+
+                <Label text="Alumno seleccionado" styleClass="field-label"/>
+                <Label fx:id="selectedStudentLabel" text="-" wrapText="true"/>
+
+                <Separator/>
+
+                <Label text="Nota (0 - 10)" styleClass="field-label"/>
+                <TextField fx:id="gradeField" promptText="Ej: 7.5" styleClass="field"/>
+
+                <Label text="Notas/observaciones" styleClass="field-label"/>
+                <TextField fx:id="notesField" promptText="Ej: Buena evolución" styleClass="field"/>
+
+                <Button fx:id="saveGradeButton" text="GUARDAR NOTA"
+                        styleClass="btn btn-primary" maxWidth="Infinity"/>
+                <Label fx:id="statusLabel" text="" wrapText="true"/>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

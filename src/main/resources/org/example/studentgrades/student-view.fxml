@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import java.net.URL?>
+<BorderPane prefWidth="920" prefHeight="540"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.studentgrades.controllers.StudentController"
+            styleClass="root">
+
+    <stylesheets>
+        <URL value="@styles/login.css"/>
+    </stylesheets>
+
+    <top>
+        <VBox styleClass="header" spacing="6">
+            <padding>
+                <Insets top="18" right="24" bottom="10" left="24"/>
+            </padding>
+            <Text text="Panel del alumno" styleClass="title"/>
+            <Text fx:id="studentNameText" text="Alumno/a: -" styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="14">
+            <padding>
+                <Insets top="10" right="24" bottom="10" left="24"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="card">
+                <padding>
+                    <Insets top="12" right="12" bottom="12" left="12"/>
+                </padding>
+
+                <Label text="Módulo:" styleClass="field-label"/>
+                <ComboBox fx:id="moduleFilterCombo" promptText="Todos"
+                          styleClass="field combo" prefWidth="420"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label text="Media general:" styleClass="field-label"/>
+                <Label fx:id="overallAvgLabel" text="-" />
+
+                <Button fx:id="logoutButton" text="CERRAR SESIÓN" styleClass="btn btn-danger"/>
+            </HBox>
+
+            <VBox spacing="10" styleClass="card" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="16" right="16" bottom="16" left="16"/>
+                </padding>
+
+                <Text text="Resumen por módulo" styleClass="title"/>
+
+                <TableView fx:id="modulesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colModuleName" text="Módulo" prefWidth="420"/>
+                        <TableColumn fx:id="colLastGrade" text="Última" prefWidth="120"/>
+                        <TableColumn fx:id="colAvgGrade" text="Media" prefWidth="120"/>
+                        <TableColumn fx:id="colStatus" text="Estado" prefWidth="120"/>
+                    </columns>
+                </TableView>
+
+                <Separator/>
+
+                <Text text="Historial (nota + observaciones)" styleClass="subtitle"/>
+                <ListView fx:id="gradesList" prefHeight="130"/>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>
