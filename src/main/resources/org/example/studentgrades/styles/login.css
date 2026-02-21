@@ -1,0 +1,121 @@
+/* Fondo general */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #f6f8fb, #eef2f7);
+    -fx-font-family: "Segoe UI", "Inter", system;
+}
+
+/* Cabecera */
+.header .title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 800;
+    -fx-fill: #1f2937;
+}
+
+.header .subtitle {
+    -fx-font-size: 13px;
+    -fx-fill: #6b7280;
+}
+
+/* Tarjeta central */
+.card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 18, 0.18, 0, 6);
+}
+
+/* Labels */
+.field-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+}
+
+/* Campos */
+.field {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 1;
+    -fx-padding: 10 12 10 12;
+}
+
+.field:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.25), 10, 0.25, 0, 2);
+}
+
+/* Logo opcional (ligero) */
+.logo {
+    -fx-opacity: 0.95;
+}
+
+/* Footer */
+.footer {
+    -fx-background-color: transparent;
+}
+
+/* Botones */
+.btn {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10 16 10 16;
+    -fx-font-weight: 800;
+    -fx-cursor: hand;
+}
+
+/* ComboBox con el mismo look que los TextField */
+.combo {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 1;
+}
+
+/* Área interna del ComboBox (display del texto) */
+.combo .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #111827;
+}
+
+/* Flecha */
+.combo .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+}
+
+/* En foco */
+.combo:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.25), 10, 0.25, 0, 2);
+}
+
+/* Primario */
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+.btn-primary:hover { -fx-background-color: #1d4ed8; }
+.btn-primary:pressed { -fx-background-color: #1e40af; }
+
+/* Secundario */
+.btn-secondary {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #111827;
+}
+.btn-secondary:hover { -fx-background-color: #d1d5db; }
+.btn-secondary:pressed { -fx-background-color: #cbd5e1; }
+
+/* Peligro */
+.btn-danger {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+}
+.btn-danger:hover { -fx-background-color: #dc2626; }
+.btn-danger:pressed { -fx-background-color: #b91c1c; }
