@@ -1,13 +1,13 @@
 package models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"teacher", "student"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-
-// Anotaciones de Hibernate
 @Entity
 @Table(name = "users")
 public class User {
@@ -35,12 +35,12 @@ public class User {
     // Relacciones
 
     // Relaccion 1:1 con Teacher
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Teacher teacher;
 
     // Relaccion 1:1 con Student
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Student student;
 
     public User(String username, String passwordHash, String firstName, String lastName, UserType userType) {

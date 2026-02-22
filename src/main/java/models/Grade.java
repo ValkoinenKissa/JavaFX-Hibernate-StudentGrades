@@ -1,12 +1,14 @@
 package models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = "studentModule")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true) // No incluir ningún campo en equals() ni en hashCode()
 @NoArgsConstructor
 @Entity
 @Table(name = "grades")

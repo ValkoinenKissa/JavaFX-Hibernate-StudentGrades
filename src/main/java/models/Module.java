@@ -1,13 +1,15 @@
 package models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"teachers", "enrollments"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true) // No incluir ningún campo en equals() ni en hashCode()
 @NoArgsConstructor
 @Entity
 @Table(name = "modules")
