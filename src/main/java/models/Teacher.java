@@ -21,9 +21,6 @@ public class Teacher {
 
     // relación @OneToOne con User
 
-    @Column(name = "id_user", nullable = false, unique = true)
-    private Integer idUser;
-
     @Column(name = "department", length = 100)
     private String department;
 
@@ -47,8 +44,8 @@ public class Teacher {
     )
     private Set<Module> modules = new HashSet<>();
 
-    public Teacher(Integer idUser, String department, String specialty) {
-        this.idUser = idUser;
+    public Teacher(User user, String department, String specialty) {
+        this.user = user;
         this.department = department;
         this.specialty = specialty;
     }

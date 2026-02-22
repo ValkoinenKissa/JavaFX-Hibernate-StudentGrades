@@ -19,9 +19,6 @@ public class Student {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "id_user", nullable = false, unique = true)
-    private Integer idUser;
-
     @Column(name = "course", length = 50)
     private String course;
 
@@ -37,8 +34,8 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<StudentModule> enrollments = new HashSet<>();
 
-    public Student(Integer idUser, String course, String gradeGroup) {
-        this.idUser = idUser;
+    public Student(User user, String course, String gradeGroup) {
+        this.user = user;
         this.course = course;
         this.gradeGroup = gradeGroup;
     }
