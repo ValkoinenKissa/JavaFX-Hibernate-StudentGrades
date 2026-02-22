@@ -14,7 +14,7 @@ public class StudentGrades extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 780, 430);
         stage.setTitle("Ventana de inicio");
         stage.setScene(scene);
-        stage.setResizable(false); // Redimension en falso
+        stage.setResizable(true); // Redimension en falso
         stage.show();
     }
 }
