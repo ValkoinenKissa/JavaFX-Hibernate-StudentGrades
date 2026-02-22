@@ -1,13 +1,15 @@
 package models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"user", "modules"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Entity
 @Table(name = "teachers")
@@ -18,9 +20,6 @@ public class Teacher {
     private Integer id;
 
     // relación @OneToOne con User
-
-    @Column(name = "id_user", nullable = false, unique = true)
-    private Integer idUser;
 
     @Column(name = "department", length = 100)
     private String department;
@@ -45,8 +44,8 @@ public class Teacher {
     )
     private Set<Module> modules = new HashSet<>();
 
-    public Teacher(Integer idUser, String department, String specialty) {
-        this.idUser = idUser;
+    public Teacher(User user, String department, String specialty) {
+        this.user = user;
         this.department = department;
         this.specialty = specialty;
     }

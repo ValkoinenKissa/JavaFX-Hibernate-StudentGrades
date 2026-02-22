@@ -1,13 +1,15 @@
 package models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"enrollments", "user"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Entity
 @Table(name = "student")
@@ -16,9 +18,6 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
-    @Column(name = "id_user", nullable = false, unique = true)
-    private Integer idUser;
 
     @Column(name = "course", length = 50)
     private String course;
@@ -35,8 +34,8 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<StudentModule> enrollments = new HashSet<>();
 
-    public Student(Integer idUser, String course, String gradeGroup) {
-        this.idUser = idUser;
+    public Student(User user, String course, String gradeGroup) {
+        this.user = user;
         this.course = course;
         this.gradeGroup = gradeGroup;
     }

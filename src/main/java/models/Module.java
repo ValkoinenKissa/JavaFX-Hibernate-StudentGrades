@@ -1,13 +1,15 @@
 package models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"teachers", "enrollments"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true) // No incluir ningún campo en equals() ni en hashCode()
 @NoArgsConstructor
 @Entity
 @Table(name = "modules")
@@ -15,6 +17,11 @@ public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    /*
+     ComboBox compara el valor seleccionado con el anterior usando equals().
+    Si equals() dice que son iguales, JavaFX decide que no ha cambiado nada
+     */
+    @EqualsAndHashCode.Include
     private Integer id;
 
     @Column(name = "module_name", length = 150)
