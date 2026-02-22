@@ -61,13 +61,15 @@ public class GradeDAOImp extends GenericDAOImp<Grade, Integer> implements GradeD
     @Override
     public BigDecimal calculateAverageGrade(Integer studentModuleId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            TypedQuery<BigDecimal> query = session.createQuery(
+            TypedQuery<Double> query = session.createQuery(
                     "SELECT AVG(g.grade) FROM Grade g WHERE g.studentModule.id = :smId",
-                    BigDecimal.class
+                    Double.class
             );
             query.setParameter("smId", studentModuleId);
-            BigDecimal average = query.getSingleResult();
-            return average != null ? average : BigDecimal.ZERO;
+            Double average = query.getSingleResult();
+            if (average == null) return BigDecimal.ZERO;
+
+            return BigDecimal.valueOf(average);
         } catch (Exception e) {
             throw new RuntimeException("Error al calcular la nota media: " + e.getMessage(), e);
         }
@@ -207,13 +209,15 @@ public class GradeDAOImp extends GenericDAOImp<Grade, Integer> implements GradeD
     @Override
     public BigDecimal calculateOverallAverageByStudent(Integer studentId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            TypedQuery<BigDecimal> query = session.createQuery(
+            TypedQuery<Double> query = session.createQuery(
                     "SELECT AVG(g.grade) FROM Grade g WHERE g.studentModule.student.id = :studentId",
-                    BigDecimal.class
+                    Double.class
             );
             query.setParameter("studentId", studentId);
-            BigDecimal average = query.getSingleResult();
-            return average != null ? average : BigDecimal.ZERO;
+            Double average = query.getSingleResult();
+            if (average == null) return BigDecimal.ZERO;
+
+            return BigDecimal.valueOf(average);
         } catch (Exception e) {
             throw new RuntimeException("Error al calcular media general: " + e.getMessage(), e);
         }
@@ -222,13 +226,14 @@ public class GradeDAOImp extends GenericDAOImp<Grade, Integer> implements GradeD
     @Override
     public BigDecimal calculateAverageGradeByModule(Integer moduleId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            TypedQuery<BigDecimal> query = session.createQuery(
+            TypedQuery<Double> query = session.createQuery(
                     "SELECT AVG(g.grade) FROM Grade g WHERE g.studentModule.module.id = :moduleId",
-                    BigDecimal.class
+                    Double.class
             );
             query.setParameter("moduleId", moduleId);
-            BigDecimal average = query.getSingleResult();
-            return average != null ? average : BigDecimal.ZERO;
+            Double average = query.getSingleResult();
+            if (average == null) return BigDecimal.ZERO;
+            return BigDecimal.valueOf(average);
         } catch (Exception e) {
             throw new RuntimeException("Error al calcular media del módulo: " + e.getMessage(), e);
         }
