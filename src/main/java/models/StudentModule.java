@@ -22,12 +22,12 @@ public class StudentModule {
     private Integer id;
 
     // Relación N:1 con Student
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_student", nullable = false)
     private Student student;
 
     // Relación N:1 con Module
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_module", nullable = false)
     private Module module;
 
